@@ -18,7 +18,7 @@
   <body>
     <div id="app">
       <div class="search">
-        <input type="text" name="" value="" placeholder="Cerca" v-model="userInput">
+        <input type="text" name="" value="" placeholder="Cerca" v-model="userInput" v-on:keyup.enter="search">
         <button type="button" name="button" @click="search">Invia</button>
       </div>
         <div class="results flex">
