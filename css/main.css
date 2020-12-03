@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
 }
 
 .flex {
@@ -31,10 +32,15 @@
 
 .movie {
   width: 200px;
-  height: 200px;
+  height: 250px;
   margin: 5px;
   /* debug */
   border: 1px solid black;
+}
+
+.movie li >img:first-child {
+  width: 80px;
+  height: auto;
 }
 
 .movie li {

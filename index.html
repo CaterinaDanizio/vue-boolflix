@@ -13,6 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- FONTAWASOME -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <!-- GOOGLE FONTS  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 
   </head>
   <body>
@@ -21,43 +24,48 @@
         <input type="text" name="" value="" placeholder="Cerca" v-model="userInput" v-on:keyup.enter="search">
         <button type="button" name="button" @click="search">Invia</button>
       </div>
+
         <div class="results">
           <!-- <h2>Movie</h2> -->
           <section class="db flex">
             <div class="movie" v-for="movie in mediaMovie">
               <ul>
+                <li><img :src="locandina + movie.poster_path" alt="">
+                  <img v-if="movie.poster_path === 'null'" src="https://fomantic-ui.com/images/wireframe/white-image.png" alt="">
+                </li>
                 <li><strong>Titolo:</strong> {{ movie.title }}
                 </li>
                 <li><strong>Titolo originale:</strong> {{ movie.original_title }}
                 </li>
-                <li><strong>Lingua:</strong> {{ movie.original_language }}
+                <li><strong>Lingua:</strong>
+                <img v-if="movie.original_language != 'en'" :src="flag + movie.original_language + spec">
+                <img v-if="movie.original_language === 'en'" :src="en">
+                {{ movie.original_language }}
                 </li>
                 <li><strong>Voto:</strong>
-                  <i :class=" {'far fa-star coloured': rating(movie.vote_average) === 1 }"></i>
-                  <i :class= "{'far fa-star coloured': rating(movie.vote_average) === 2 }"></i>
-                  <i :class= "{'far fa-star coloured': rating(movie.vote_average) === 3 }"></i>
-                  <i :class= "{'far fa-star coloured': rating(movie.vote_average) === 4 }"></i>
-                  <i :class="{'far fa-star coloured': rating(movie.vote_average) === 5 }"></i>
-                  {{ rating(movie.vote_average) }}
+                  <i v-if="rating(movie.vote_average) > 0" v-for="(star, i) in 5" :class="i <= rating(movie.vote_average)-1 ? 'fas fa-star coloured' : 'far fa-star'"></i>
+                  <i v-if="rating(movie.vote_average) <= 0" :class="'far fa-star-half'"></i>
                 </li>
               </ul>
             </div>
           <!-- <h2>Serie tv</h2> -->
             <div class="movie" v-for="serieTv in mediaTv">
               <ul>
+                <li><img :src="locandina + serieTv.poster_path" alt=""></li>
                 <li><strong>Titolo:</strong> {{ serieTv.name }}
                 </li>
                 <li><strong>Titolo originale:</strong> {{ serieTv.original_name }}
                 </li>
-                <li><strong>Lingua:</strong> {{ serieTv.original_language }}
+                <li><strong>Lingua:</strong>
+                  <img v-if="serieTv.original_language != 'en'" :src="flag + serieTv.original_language + spec">
+                  <img v-if="movie.original_language === 'en'" :src="en">
+                   {{ serieTv.original_language }}
                 </li>
-                <li><strong>Voto:</strong>
-                  <i :class=" {'far fa-star coloured': rating(serieTv.vote_average) === 1 }"></i>
-                  <i :class= "{'far fa-star coloured': rating(serieTv.vote_average) === 2 }"></i>
-                  <i :class= "{'far fa-star coloured': rating(serieTv.vote_average) === 3 }"></i>
-                  <i :class= "{'far fa-star coloured': rating(serieTv.vote_average) === 4 }"></i>
-                  <i :class=" {'far fa-star coloured': rating(serieTv.vote_average) === 5 }"></i>
-                  {{ rating(serieTv.vote_average) }} </li>
+                <li><strong>
+                  Voto:</strong>
+                    <i v-if="rating(serieTv.vote_average) > 0" v-for="(star, i) in 5" :class="i <= rating(serieTv.vote_average)-1 ? 'fas fa-star coloured' : 'far fa-star'"></i>
+                    <i v-if="rating(serieTv.vote_average) <= 0" :class="'far fa-star-half'"></i>
+                  </li>
               </ul>
             </div>
           </section>
