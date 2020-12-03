@@ -20,19 +20,27 @@
 .results {
   width: 80%;
   margin: 0 auto;
-  justify-content: space-between;
-  flex-wrap: wrap;
   /* debug */
   border: 1px solid black;
+}
+
+.db {
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .movie {
   width: 200px;
   height: 200px;
+  margin: 5px;
   /* debug */
   border: 1px solid black;
 }
 
 .movie li {
   list-style: none;
+}
+
+.coloured {
+  color: orange;
 }

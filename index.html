@@ -21,18 +21,46 @@
         <input type="text" name="" value="" placeholder="Cerca" v-model="userInput" v-on:keyup.enter="search">
         <button type="button" name="button" @click="search">Invia</button>
       </div>
-        <div class="results flex">
-          <div class="movie" v-for="movie in media">
-            <ul>
-              <li>Titolo: {{ movie.name }}
-              </li>
-              <li>Titolo originale: {{ movie.original_name }}
-              </li>
-              <li>Lingua: {{ movie.original_language }}
-              </li>
-              <li>Voto: {{ movie.vote_average }}</li>
-            </ul>
-          </div>
+        <div class="results">
+          <!-- <h2>Movie</h2> -->
+          <section class="db flex">
+            <div class="movie" v-for="movie in mediaMovie">
+              <ul>
+                <li><strong>Titolo:</strong> {{ movie.title }}
+                </li>
+                <li><strong>Titolo originale:</strong> {{ movie.original_title }}
+                </li>
+                <li><strong>Lingua:</strong> {{ movie.original_language }}
+                </li>
+                <li><strong>Voto:</strong>
+                  <i :class=" {'far fa-star coloured': rating(movie.vote_average) === 1 }"></i>
+                  <i :class= "{'far fa-star coloured': rating(movie.vote_average) === 2 }"></i>
+                  <i :class= "{'far fa-star coloured': rating(movie.vote_average) === 3 }"></i>
+                  <i :class= "{'far fa-star coloured': rating(movie.vote_average) === 4 }"></i>
+                  <i :class="{'far fa-star coloured': rating(movie.vote_average) === 5 }"></i>
+                  {{ rating(movie.vote_average) }}
+                </li>
+              </ul>
+            </div>
+          <!-- <h2>Serie tv</h2> -->
+            <div class="movie" v-for="serieTv in mediaTv">
+              <ul>
+                <li><strong>Titolo:</strong> {{ serieTv.name }}
+                </li>
+                <li><strong>Titolo originale:</strong> {{ serieTv.original_name }}
+                </li>
+                <li><strong>Lingua:</strong> {{ serieTv.original_language }}
+                </li>
+                <li><strong>Voto:</strong>
+                  <i :class=" {'far fa-star coloured': rating(serieTv.vote_average) === 1 }"></i>
+                  <i :class= "{'far fa-star coloured': rating(serieTv.vote_average) === 2 }"></i>
+                  <i :class= "{'far fa-star coloured': rating(serieTv.vote_average) === 3 }"></i>
+                  <i :class= "{'far fa-star coloured': rating(serieTv.vote_average) === 4 }"></i>
+                  <i :class=" {'far fa-star coloured': rating(serieTv.vote_average) === 5 }"></i>
+                  {{ rating(serieTv.vote_average) }} </li>
+              </ul>
+            </div>
+          </section>
         </div>
     </div>
 
