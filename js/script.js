@@ -40,6 +40,6 @@ var app = new Vue({
      rating: function (vote) {
              return Math.round(vote / 2);
            }
-  }
+   }
 
 });

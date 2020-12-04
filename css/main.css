@@ -1,26 +1,56 @@
+/* Regole generali */
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+  font-size: 14px;
 }
 
 .flex {
   display: flex;
 }
 
+/* Sezione app */
+
 #app {
-  height: 100vh;
   width: 100vw;
+  min-height: 100vh;
+  background-color: grey;
+}
+
+header {
+  height: 90px;
+  width: 100%;
+  background-color: black;
+  justify-content: space-between;
+  align-items: center;
+  /* debug */
+  border: 1px solid black;
+}
+
+header img {
+  height: 60px;
+  margin-left: 20px;
 }
 
 .search {
-  float: right;
+  color: white;
+  margin-right: 20px;
+}
+
+.search input, button {
+  padding: 10px;
+}
+
+.search button {
+  background-color: red;
+  color: white;
+  border: 1px solid white;
 }
 
 .results {
-  width: 80%;
-  margin: 0 auto;
+
   /* debug */
   border: 1px solid black;
 }
@@ -28,20 +58,31 @@
 .db {
   justify-content: center;
   flex-wrap: wrap;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .movie {
   width: 200px;
   height: 250px;
-  margin: 5px;
+  margin: 10px;
   /* debug */
-  border: 1px solid black;
+  border: 2px solid white;
 }
 
-.movie li >img:first-child {
-  width: 80px;
-  height: auto;
+img.poster {
+  width: 100%;
+  height: 250px;
+  opacity: 1;
 }
+
+/* img.null {
+  width: 80px;
+  height: 100px;
+  /* debug */
+  /* border: 1px solid grey;
+} */
 
 .movie li {
   list-style: none;
