@@ -10,12 +10,7 @@ var app = new Vue({
     userInput: "",
     mediaMovie: [],
     mediaTv: [],
-    locandina: "https://image.tmdb.org/t/p/w185",
-    flag: "https://www.countryflags.io/",
-    spec: "/flat/24.png",
-    en: "https://www.countryflags.io/gb/flat/24.png",
-    ja: "https://www.countryflags.io/jp/flat/24.png",
-
+    locandina: "https://image.tmdb.org/t/p/w185"
   },
 
 // Funzione che contiene chiamata API collegata all'inserimento di una query di ricerca nell'input
@@ -25,7 +20,6 @@ var app = new Vue({
         let movies = risposta.data.results;
         this.mediaMovie = movies;
       });
-      this.userInput = "";
 
 
 // Chiamata API per le serie TV
@@ -34,12 +28,13 @@ var app = new Vue({
         this.mediaTv = serieTv;
       });
       this.userInput = "";
+
     },
+
 
 // Funzione per portare il voto in un range da 1 a 5 e arrotondarlo per eccesso
      rating: function (vote) {
              return Math.round(vote / 2);
            }
    }
-
 });

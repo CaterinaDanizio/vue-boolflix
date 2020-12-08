@@ -16,27 +16,25 @@
 #app {
   width: 100vw;
   min-height: 100vh;
-  background-color: grey;
+  background-color: #434343;
 }
 
 header {
-  height: 90px;
+  height: 80px;
   width: 100%;
   background-color: black;
   justify-content: space-between;
   align-items: center;
-  /* debug */
-  border: 1px solid black;
 }
 
-header img {
+img.logo {
   height: 60px;
   margin-left: 20px;
 }
 
 .search {
   color: white;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .search input, button {
@@ -49,16 +47,10 @@ header img {
   border: 1px solid white;
 }
 
-.results {
-
-  /* debug */
-  border: 1px solid black;
-}
-
 .db {
+  width: 95%;
   justify-content: center;
   flex-wrap: wrap;
-  width: 95%;
   margin: 0 auto;
   margin-top: 20px;
 }
@@ -66,28 +58,59 @@ header img {
 .movie {
   width: 200px;
   height: 250px;
+  background-color: black;
+  color: white;
   margin: 10px;
-  /* debug */
+  padding: 5px;
   border: 2px solid white;
+  position: relative;
 }
 
-img.poster {
+.poster{
   width: 100%;
-  height: 250px;
-  opacity: 1;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-/* img.null {
-  width: 80px;
-  height: 100px;
-  /* debug */
-  /* border: 1px solid grey;
-} */
+.info {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
 
-.movie li {
+.info li {
   list-style: none;
 }
 
 .coloured {
   color: orange;
+}
+
+.overview {
+  position: relative;
+   white-space: nowrap;
+   max-height: 70px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}
+
+img.flag {
+  height: 20px;
+  width: auto;
+  padding: 2px;
+}
+
+/* Regole hover */
+
+:hover {
+  cursor: pointer;
+}
+.movie:hover .info {
+  opacity: 1;
+}
+
+.movie:hover .poster {
+  opacity: 0;
 }
