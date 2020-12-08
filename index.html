@@ -37,31 +37,41 @@
 
           <!-- Sezione film -->
           <section class="db flex">
-            <div class="movie" v-for="movie in mediaMovie">
+            <div class="movie" v-for="media in databaseUnico">
               <div class="info">
                 <ul>
-                  <li><strong>Titolo:</strong> {{ movie.title }}
+                  <li><strong>Titolo:</strong> {{ media.title || media.name }}
                   </li>
-                  <li><strong>Titolo originale:</strong> {{ movie.original_title }}
+                  <li><strong>Titolo originale:</strong> {{ media.original_title || media.original_name }}
                   </li>
-                  <li class="overview"><strong>Trama:</strong> {{ movie.overview }}
+                  <li class="overview"><strong>Trama:</strong>
+                    <p>{{ media.overview }}</p>
                   </li>
                   <li><strong>Lingua:</strong>
-                  <img class="flag" :src="'img/' + movie.original_language + '.svg'">
+                  <img class="flag" :src="'img/' + media.original_language + '.svg'">
                   </li>
                   <li><strong>Voto:</strong>
-                    <i v-if="rating(movie.vote_average) > 0" v-for="(star, i) in 5" :class="i <= rating(movie.vote_average)-1 ? 'fas fa-star coloured' : 'far fa-star'"></i>
-                    <i v-if="rating(movie.vote_average) <= 0" :class="'far fa-star-half'"></i>
+                    <i v-if="rating(media.vote_average) > 0" v-for="(star, i) in 5" :class="i <= rating(media.vote_average)-1 ? 'fas fa-star coloured' : 'far fa-star'"></i>
+                    <i v-if="rating(media.vote_average) <= 0" :class="'far fa-star-half'"></i>
                   </li>
+                  <li>
                 </ul>
+                    <div class="CTA flex">
+                    <button type="button" name="button" @click="learnMore(media.id)">Scopri di più</button>
+                    <div class="cast">
+                      <ul>
+                        <li v-for="actor in castUnico">{{ actor.name }}</li>
+                      </ul>
+                    </div>
+                  </div>
               </div>
               <div class="poster">
-                <img class="poster" v-if="movie.poster_path !== null" :src="locandina + movie.poster_path" alt="">
-                <img class="null poster" v-if="movie.poster_path === null" src="https://fomantic-ui.com/images/wireframe/white-image.png" alt="">
+                <img class="poster" v-if="media.poster_path !== null" :src="locandina + media.poster_path" alt="">
+                <img class="null poster" v-if="media.poster_path === null" :src="locandinaMancante" alt="">
               </div>
             </div>
           <!-- Sezione serie tv -->
-            <div class="movie" v-for="serieTv in mediaTv">
+            <!-- <div class="movie" v-for="serieTv in mediaTv">
               <div class="info">
                 <ul>
                   <li><strong>Titolo:</strong> {{ serieTv.name }}
@@ -82,7 +92,7 @@
                 <img class="poster" v-if="serieTv.poster_path !== null" :src="locandina + serieTv.poster_path" alt="">
                 <img class="null poster" v-if="serieTv.poster_path === null" src="https://fomantic-ui.com/images/wireframe/white-image.png" alt="">
               </div>
-            </div>
+            </div> -->
           </section>
         </div>
       </main>
