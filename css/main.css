@@ -53,6 +53,7 @@ img.logo {
 
 .CTA button {
   margin-top: 10px;
+  z-index: 99;
 }
 
 .db {
@@ -110,8 +111,13 @@ img.flag {
   padding: 2px;
 }
 
+.cast {
+  justify-content: center;
+  padding-top: 10px;
+}
+
 .cast li {
-  font-size: 8px;
+  font-size: 12px;
   color: white;
 }
 

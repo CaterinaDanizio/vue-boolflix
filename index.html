@@ -57,13 +57,14 @@
                   <li>
                 </ul>
                     <div class="CTA flex">
-                    <button type="button" name="button" @click="learnMore(media.id)">Scopri di più</button>
-                    <div class="cast">
+                      <button type="button" name="button" @click="learnMore(media.id)">Scopri di più</button>
+                    </div>
+                    <div class="cast flex">
                       <ul>
-                        <li v-for="actor in castUnico">{{ actor.name }}</li>
+                        <li v-for="actor in castUnico"><i class="fas fa-film"></i>{{ " " + actor.name + " - " + actor.character }}</li>
                       </ul>
                     </div>
-                  </div>
+
               </div>
               <div class="poster">
                 <img class="poster" v-if="media.poster_path !== null" :src="locandina + media.poster_path" alt="">
