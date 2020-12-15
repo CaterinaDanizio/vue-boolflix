@@ -50,17 +50,17 @@ var app = new Vue({
              return Math.round(vote / 2);
            },
 
- //     learnMore: function (index) {
- //       this.mediaActive = this.databaseUnico[index]
- //
- //       axios.get("https://api.themoviedb.org/3/movie" + "/" + this.mediaActive.id + "/credits?api_key=0b739e8a0353e6df48b40dbc54ebd08e").then(risposta => {
- //         let crew = risposta.data.cast;
- //        for(let i = 0;i < 5; i++){
- //          this.castUnico.push(crew[i]);
- //        }
- //        console.log(this.castUnico);
- //
- //   });
- // },
+// Funzione per far comparire i primi 5 interpreti del cast
+
+    learnMore: function (index) {
+    this.mediaActive = this.databaseUnico[index]
+    axios.get("https://api.themoviedb.org/3/movie" + "/" + this.mediaActive.id + "/credits?api_key=0b739e8a0353e6df48b40dbc54ebd08e").then(risposta => {
+    let crew = risposta.data.cast;
+    for(let i = 0;i < 5; i++){
+    this.castUnico.push(crew[i]);
+    }
+    console.log(this.castUnico);
+  });
  },
+},
 });
