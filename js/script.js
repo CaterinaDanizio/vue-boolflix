@@ -8,8 +8,8 @@ var app = new Vue({
     databaseUnico: [],
     locandina: "https://image.tmdb.org/t/p/w185",
     locandinaMancante: "https://fomantic-ui.com/images/wireframe/white-image.png",
-    castUnico: [],
-    mediaActive: {id: ""}
+    castUnico: [{id: ""}]
+    // mediaActive: [{id: ""}]
   },
 
 // Funzione che contiene chiamata API collegata all'inserimento di una query di ricerca nell'input
@@ -57,9 +57,8 @@ var app = new Vue({
     axios.get("https://api.themoviedb.org/3/movie" + "/" + id + "/credits?api_key=0b739e8a0353e6df48b40dbc54ebd08e").then(risposta => {
     let crew = risposta.data.cast;
     for(let i = 0;i < 5; i++){
-    this.castUnico.push(crew[i]);
+    this.castUnico[this.id].push(crew[i]);
     }
-    console.log(this.castUnico);
   });
  },
 },
